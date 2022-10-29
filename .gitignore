@@ -3,6 +3,8 @@
 old
 old?
 *.pc
+.idea
+.vscode
 
 # Object files
 *.o
@@ -46,3 +48,7 @@ test/rtp_decoder
 test/rtpw
 test/srtp_driver
 test/test_srtp
+
+# Rust/c2rust
+target/
+compile_commands.json
