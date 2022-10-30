@@ -30,5 +30,11 @@ testmem.o: testmem.c
 srtp-fuzzer: fuzzer.o mt19937.o testmem.o
 	$(COMPILECXX) -L. -L.. fuzzer.o mt19937.o testmem.o $(LIBFUZZER) $(CRYPTOLIB) $(LIBS) -o srtp-fuzzer
 
+# TODO(perl): build rust crate with sanitizer coverage. Potentially useful page:
+# https://github.com/rust-fuzz/libfuzzer#manual-usage
+srtp-fuzzer-rs: fuzzer.o mt19937.o testmem.o
+	$(COMPILECXX) -L. -L../target/debug fuzzer.o mt19937.o testmem.o $(LIBFUZZER) $(CRYPTOLIB) $(LIBS) -o srtp-fuzzer
+
+
 clean:
 	rm -rf srtp-fuzzer *.o
